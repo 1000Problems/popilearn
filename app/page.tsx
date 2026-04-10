@@ -223,12 +223,6 @@ function Nav() {
             </svg>
             Subscribe
           </a>
-          <button
-            className="btn-teal"
-            style={{ fontSize: 15, padding: "10px 26px" }}
-          >
-            Start Free
-          </button>
         </div>
       </div>
     </nav>
@@ -303,6 +297,42 @@ function HeroSection() {
       <FloatingBlock letter="★" bg="#FFD060" shadow="#C09030" x="10%"  y="80%" size={30} animName="float-c" duration={4.0} delay={2.4} />
       <FloatingBlock letter="♪" bg="#4CBFA0" shadow="#229070" x="89%"  y="32%" size={32} animName="float-d" duration={3.3} delay={0.9} />
 
+      {/* Centered badge above the grid */}
+      <div
+        className="anim-slide-up delay-0"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: 36,
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            background: "rgba(76,191,160,0.14)",
+            border: "1.5px solid rgba(76,191,160,0.32)",
+            borderRadius: 999,
+            padding: "7px 18px",
+          }}
+        >
+          <span style={{ fontSize: 16 }}>🌟</span>
+          <span
+            style={{
+              fontFamily: "var(--font-nunito)",
+              fontWeight: 700,
+              fontSize: 14,
+              color: "#2A9075",
+            }}
+          >
+            Coming Soon — Be the First to Know!
+          </span>
+        </div>
+      </div>
+
       <div
         style={{
           maxWidth: 1200,
@@ -317,32 +347,6 @@ function HeroSection() {
       >
         {/* ── Left col ── */}
         <div>
-          {/* Pill badge */}
-          <div
-            className="anim-slide-up delay-0"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              background: "rgba(76,191,160,0.14)",
-              border: "1.5px solid rgba(76,191,160,0.32)",
-              borderRadius: 999,
-              padding: "7px 18px",
-              marginBottom: 28,
-            }}
-          >
-            <span style={{ fontSize: 16 }}>🌟</span>
-            <span
-              style={{
-                fontFamily: "var(--font-nunito)",
-                fontWeight: 700,
-                fontSize: 14,
-                color: "#2A9075",
-              }}
-            >
-              Coming Soon — Be the First to Know!
-            </span>
-          </div>
 
           {/* Headline */}
           <h1
@@ -642,7 +646,7 @@ function FeaturesSection() {
       check: "#FFE0D8",
     },
     {
-      emoji: "🎮",
+      emoji: "🌈",
       title: "Learn",
       sub: "Games That Stick",
       body: "Adaptive mini-games that make learning feel like pure play. Difficulty adjusts in real time so every child is perfectly challenged.",
@@ -993,138 +997,6 @@ function HowItWorksSection() {
   );
 }
 
-/* ──────────────────────────────────────────────
-   TESTIMONIALS
-────────────────────────────────────────────── */
-
-function TestimonialsSection() {
-  const reviews = [
-    {
-      quote:
-        "My daughter literally asks for \"Popi time\" every morning. She learned all 26 letters in just three weeks — I'm blown away.",
-      name: "Sarah M.",
-      role: "Parent of Ella, age 4",
-      avatar: "👩",
-      bg: "#FFF0E8",
-      border: "rgba(255,130,70,0.2)",
-    },
-    {
-      quote:
-        "The songs are SO catchy — I catch myself singing them at work! Most importantly, Oliver is thriving and absolutely loves it.",
-      name: "James T.",
-      role: "Parent of Oliver, age 3",
-      avatar: "👨",
-      bg: "#E8F4FF",
-      border: "rgba(70,140,220,0.2)",
-    },
-    {
-      quote:
-        "As an early childhood educator, I recommend PopiLearn to every family. The curriculum depth is remarkable for an app.",
-      name: "Dr. Lisa K.",
-      role: "Early Childhood Educator",
-      avatar: "👩‍🏫",
-      bg: "#F0E8FF",
-      border: "rgba(160,130,255,0.2)",
-    },
-  ];
-
-  return (
-    <section
-      style={{ padding: "80px 28px", background: "var(--cream-mid)" }}
-    >
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <SectionLabel>Families Love Us</SectionLabel>
-        <h2
-          style={{
-            fontFamily: "var(--font-baloo)",
-            fontWeight: 800,
-            fontSize: "clamp(30px, 4vw, 50px)",
-            color: "var(--navy)",
-            textAlign: "center",
-            lineHeight: 1.1,
-            marginBottom: 56,
-          }}
-        >
-          Parents Are Raving
-        </h2>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: 24,
-          }}
-        >
-          {reviews.map((r) => (
-            <div
-              key={r.name}
-              className="card-lift"
-              style={{
-                background: r.bg,
-                borderRadius: 26,
-                padding: "36px 32px",
-                border: `2px solid ${r.border}`,
-                boxShadow: "3px 6px 0 rgba(0,0,0,0.06)",
-              }}
-            >
-              {/* Open quote */}
-              <div
-                style={{
-                  fontFamily: "Georgia, serif",
-                  fontSize: 72,
-                  color: "rgba(0,0,0,0.08)",
-                  lineHeight: 0.8,
-                  marginBottom: 12,
-                }}
-              >
-                &ldquo;
-              </div>
-              <p
-                style={{
-                  fontSize: 15,
-                  lineHeight: 1.72,
-                  color: "var(--navy)",
-                  fontWeight: 500,
-                  fontStyle: "italic",
-                  marginBottom: 24,
-                }}
-              >
-                {r.quote}
-              </p>
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ fontSize: 38 }}>{r.avatar}</div>
-                <div>
-                  <div
-                    style={{
-                      fontFamily: "var(--font-baloo)",
-                      fontWeight: 700,
-                      fontSize: 16,
-                      color: "var(--navy)",
-                      marginBottom: 2,
-                    }}
-                  >
-                    {r.name}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 12,
-                      color: "var(--navy-light)",
-                      fontWeight: 600,
-                      marginBottom: 4,
-                    }}
-                  >
-                    {r.role}
-                  </div>
-                  <Stars />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ──────────────────────────────────────────────
    DOWNLOAD / CTA
@@ -1458,7 +1330,6 @@ export default function Home() {
         <FeaturesSection />
         <LearningSection />
         <HowItWorksSection />
-        <TestimonialsSection />
         <DownloadSection />
       </main>
       <Footer />
