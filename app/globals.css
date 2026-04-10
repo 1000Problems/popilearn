@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #FFF3DC;
+  --cream-mid: #F5E8C8;
+  --cream-dark: #EDD9A3;
+  --teal: #4CBFA0;
+  --teal-dark: #33A085;
+  --teal-light: #7DCFB8;
+  --coral: #FF8A6E;
+  --coral-dark: #E06848;
+  --yellow: #FFD060;
+  --yellow-dark: #E5B640;
+  --sky: #6BB5FF;
+  --sky-dark: #4A94E0;
+  --purple: #B8A2FF;
+  --purple-dark: #9080E0;
+  --green: #7DD47A;
+  --green-dark: #5CB859;
+  --navy: #2A3B4C;
+  --navy-mid: #3D5468;
+  --navy-light: #4A6070;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito', system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ──────────────────────────────────────────────
+   KEYFRAME ANIMATIONS
+────────────────────────────────────────────── */
+
+@keyframes float-a {
+  0%, 100% { transform: translateY(0px) rotate(-8deg); }
+  50%       { transform: translateY(-20px) rotate(-4deg); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translateY(0px) rotate(6deg); }
+  50%       { transform: translateY(-16px) rotate(10deg); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translateY(0px) rotate(-3deg); }
+  50%       { transform: translateY(-24px) rotate(3deg); }
+}
+@keyframes float-d {
+  0%, 100% { transform: translateY(0px) rotate(12deg); }
+  50%       { transform: translateY(-14px) rotate(6deg); }
+}
+
+@keyframes wave-bar {
+  0%, 100% { height: 5px; }
+  50%       { height: 28px; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes spin-rev {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(36px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pop-in {
+  0%   { transform: scale(0.6) rotate(-10deg); opacity: 0; }
+  65%  { transform: scale(1.08) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -300% center; }
+  100% { background-position:  300% center; }
+}
+
+/* ──────────────────────────────────────────────
+   ANIMATION UTILITY CLASSES
+────────────────────────────────────────────── */
+
+.anim-slide-up   { animation: slide-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-in    { animation: fade-in  0.5s ease both; }
+.anim-pop-in     { animation: pop-in   0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+.delay-0  { animation-delay: 0s; }
+.delay-1  { animation-delay: 0.1s; }
+.delay-2  { animation-delay: 0.2s; }
+.delay-3  { animation-delay: 0.3s; }
+.delay-4  { animation-delay: 0.4s; }
+.delay-5  { animation-delay: 0.5s; }
+.delay-6  { animation-delay: 0.6s; }
+
+/* ──────────────────────────────────────────────
+   INTERACTIVE STATES
+────────────────────────────────────────────── */
+
+.btn-teal {
+  background: var(--teal);
+  color: white;
+  font-weight: 800;
+  padding: 16px 36px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 0 var(--teal-dark);
+  transition: transform 0.12s, box-shadow 0.12s;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-teal:hover  { transform: translateY(-3px); box-shadow: 0 9px 0 var(--teal-dark); }
+.btn-teal:active { transform: translateY(3px);  box-shadow: 0 3px 0 var(--teal-dark); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--navy);
+  font-weight: 800;
+  padding: 16px 36px;
+  border-radius: 999px;
+  border: 2.5px solid rgba(42,59,76,0.18);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-ghost:hover { background: rgba(42,59,76,0.05); border-color: rgba(42,59,76,0.3); }
+
+.btn-white {
+  background: white;
+  color: var(--navy);
+  font-weight: 800;
+  padding: 18px 40px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.18);
+  transition: transform 0.12s, box-shadow 0.12s;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-white:hover  { transform: translateY(-3px); box-shadow: 0 9px 0 rgba(0,0,0,0.18); }
+.btn-white:active { transform: translateY(3px);  box-shadow: 0 3px 0 rgba(0,0,0,0.18); }
+
+.btn-outline-white {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  font-weight: 800;
+  padding: 18px 40px;
+  border-radius: 999px;
+  border: 2.5px solid rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.22); }
+
+.card-lift {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s;
+  cursor: pointer;
+}
+.card-lift:hover { transform: translateY(-6px); }
+
+.nav-link {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--navy-light);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-link:hover { color: var(--navy); }
+
+/* ──────────────────────────────────────────────
+   SECTION DIVIDERS
+────────────────────────────────────────────── */
+
+.wave-bottom {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────
+   GRAIN TEXTURE OVERLAY
+────────────────────────────────────────────── */
+
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
