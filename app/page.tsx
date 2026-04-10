@@ -115,6 +115,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function Nav() {
   return (
     <nav
+      className="site-nav"
       style={{
         position: "sticky",
         top: 0,
@@ -123,17 +124,17 @@ function Nav() {
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
         borderBottom: "2px solid rgba(0,0,0,0.07)",
-        padding: "0 28px",
       }}
     >
       <div
         style={{
           maxWidth: 1200,
           margin: "0 auto",
-          height: 72,
+          height: 64,
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          padding: "0 20px",
         }}
       >
         {/* Logo */}
@@ -170,31 +171,34 @@ function Nav() {
         </div>
 
         {/* Links */}
-        <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
-          {["Features", "Learn", "About"].map((l) => (
-            <a key={l} href="#" className="nav-link">
-              {l}
-            </a>
-          ))}
-          <div style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            background: "rgba(76,191,160,0.12)",
-            border: "1.5px solid rgba(76,191,160,0.3)",
-            borderRadius: 999,
-            padding: "8px 16px",
-            fontFamily: "var(--font-baloo)",
-            fontWeight: 700,
-            fontSize: 13,
-            color: "var(--teal-dark)",
-          }}>
-            <span>🚀</span> Coming Soon
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <div className="nav-links-group" style={{ display: "flex", gap: 28, alignItems: "center" }}>
+            {["Features", "Learn", "About"].map((l) => (
+              <a key={l} href="#" className="nav-link">
+                {l}
+              </a>
+            ))}
+            <div style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              background: "rgba(76,191,160,0.12)",
+              border: "1.5px solid rgba(76,191,160,0.3)",
+              borderRadius: 999,
+              padding: "8px 16px",
+              fontFamily: "var(--font-baloo)",
+              fontWeight: 700,
+              fontSize: 13,
+              color: "var(--teal-dark)",
+            }}>
+              <span>🚀</span> Coming Soon
+            </div>
           </div>
           <a
             href="https://www.youtube.com/channel/UCH7ZAZ4VvAlRSu6Uyo8IAfg"
             target="_blank"
             rel="noopener noreferrer"
+            className="nav-yt-btn"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -209,12 +213,13 @@ function Nav() {
               textDecoration: "none",
               boxShadow: "0 4px 0 #CC0000",
               transition: "transform 0.12s, box-shadow 0.12s",
+              flexShrink: 0,
             }}
           >
             <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor">
               <path d="M15.68 1.88A2 2 0 0 0 14.29.46C13.04.1 8 .1 8 .1s-5.04 0-6.29.36A2 2 0 0 0 .32 1.88C0 3.14 0 5.76 0 5.76s0 2.62.32 3.88a2 2 0 0 0 1.39 1.42C2.96 11.42 8 11.42 8 11.42s5.04 0 6.29-.36a2 2 0 0 0 1.39-1.42C16 8.38 16 5.76 16 5.76s0-2.62-.32-3.88zM6.4 8.2V3.32l4.21 2.44L6.4 8.2z"/>
             </svg>
-            Subscribe
+            <span className="nav-yt-label">Subscribe</span>
           </a>
         </div>
       </div>
@@ -229,14 +234,22 @@ function Nav() {
 function BannerSection() {
   return (
     <section style={{ background: "var(--cream)", lineHeight: 0 }}>
-      <Image
-        src="/PopiBanner.png"
-        alt="PopiLearn — Sing, Learn & Grow!"
-        width={1920}
-        height={1080}
-        style={{ width: "100%", height: "auto", display: "block" }}
-        priority
-      />
+      <a
+        href="https://www.youtube.com/channel/UCH7ZAZ4VvAlRSu6Uyo8IAfg"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit PopiLearn on YouTube"
+        style={{ display: "block", cursor: "pointer" }}
+      >
+        <Image
+          src="/PopiBanner.png"
+          alt="PopiLearn — Sing, Learn & Grow!"
+          width={1920}
+          height={1080}
+          style={{ width: "100%", height: "auto", display: "block" }}
+          priority
+        />
+      </a>
     </section>
   );
 }

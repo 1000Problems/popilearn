@@ -205,6 +205,20 @@ body {
 }
 .nav-link:hover { color: var(--navy); }
 
+/* ── Mobile nav ── */
+@media (max-width: 600px) {
+  .nav-links-group {
+    display: none !important;
+  }
+  .nav-yt-btn {
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+  }
+  .nav-yt-label {
+    display: none;
+  }
+}
+
 /* ──────────────────────────────────────────────
    SECTION DIVIDERS
 ────────────────────────────────────────────── */
