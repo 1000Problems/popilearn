@@ -84,13 +84,6 @@ function WaveBars({
   );
 }
 
-function Stars({ n = 5 }: { n?: number }) {
-  return (
-    <span style={{ color: "#FFD060", fontSize: 16, letterSpacing: 1 }}>
-      {"★".repeat(n)}
-    </span>
-  );
-}
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -126,7 +119,7 @@ function Nav() {
         position: "sticky",
         top: 0,
         zIndex: 200,
-        background: "rgba(255,243,220,0.88)",
+        background: "rgba(245,236,218,0.88)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
         borderBottom: "2px solid rgba(0,0,0,0.07)",
@@ -230,314 +223,177 @@ function Nav() {
 }
 
 /* ──────────────────────────────────────────────
-   HERO
+   BANNER (full-width welcome image)
 ────────────────────────────────────────────── */
 
-function HeroSection() {
+function BannerSection() {
+  return (
+    <section style={{ background: "var(--cream)", lineHeight: 0 }}>
+      <Image
+        src="/PopiBanner.png"
+        alt="PopiLearn — Sing, Learn & Grow!"
+        width={1920}
+        height={1080}
+        style={{ width: "100%", height: "auto", display: "block" }}
+        priority
+      />
+    </section>
+  );
+}
+
+/* ──────────────────────────────────────────────
+   HERO CTA (centered waitlist below the banner)
+────────────────────────────────────────────── */
+
+function HeroCTASection() {
   return (
     <section
       style={{
         position: "relative",
         padding: "72px 28px 96px",
-        overflow: "hidden",
         background: "var(--cream)",
+        overflow: "hidden",
+        textAlign: "center",
       }}
     >
-      {/* Background color blobs */}
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          top: -120,
-          right: -80,
-          width: 560,
-          height: 560,
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(76,191,160,0.16) 0%, transparent 68%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          bottom: -60,
-          left: -100,
-          width: 480,
-          height: 480,
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(255,138,110,0.12) 0%, transparent 68%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          top: "35%",
-          left: "28%",
-          width: 360,
-          height: 360,
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(255,208,96,0.14) 0%, transparent 68%)",
-          pointerEvents: "none",
-        }}
-      />
-
       {/* Floating alphabet blocks */}
-      <FloatingBlock letter="A" bg="#FF9B7E" shadow="#D06848" x="3.5%" y="12%" size={50} animName="float-a" duration={3.2} delay={0}   />
-      <FloatingBlock letter="B" bg="#6BB5FF" shadow="#4080CC" x="6.5%" y="58%" size={40} animName="float-b" duration={2.9} delay={0.7} />
-      <FloatingBlock letter="C" bg="#FFD060" shadow="#C09030" x="2.5%" y="38%" size={34} animName="float-c" duration={3.8} delay={1.5} />
-      <FloatingBlock letter="1" bg="#B8A2FF" shadow="#8065CC" x="87%"  y="14%" size={44} animName="float-d" duration={3.1} delay={0.3} />
-      <FloatingBlock letter="2" bg="#7DD47A" shadow="#4CA049" x="91%"  y="52%" size={38} animName="float-a" duration={2.7} delay={1.1} />
-      <FloatingBlock letter="3" bg="#FF9B7E" shadow="#D06848" x="84%"  y="72%" size={46} animName="float-b" duration={3.5} delay={1.9} />
-      <FloatingBlock letter="★" bg="#FFD060" shadow="#C09030" x="10%"  y="80%" size={30} animName="float-c" duration={4.0} delay={2.4} />
-      <FloatingBlock letter="♪" bg="#4CBFA0" shadow="#229070" x="89%"  y="32%" size={32} animName="float-d" duration={3.3} delay={0.9} />
+      <FloatingBlock letter="A" bg="#E05535" shadow="#B83A20" x="3%"  y="8%"  size={50} animName="float-a" duration={3.2} delay={0}   />
+      <FloatingBlock letter="B" bg="#5AA8DC" shadow="#3880B8" x="6%"  y="55%" size={40} animName="float-b" duration={2.9} delay={0.7} />
+      <FloatingBlock letter="C" bg="#F5C830" shadow="#C89C10" x="2%"  y="32%" size={34} animName="float-c" duration={3.8} delay={1.5} />
+      <FloatingBlock letter="1" bg="#B8A2FF" shadow="#8065CC" x="88%" y="10%" size={44} animName="float-d" duration={3.1} delay={0.3} />
+      <FloatingBlock letter="2" bg="#65BF48" shadow="#429630" x="92%" y="50%" size={38} animName="float-a" duration={2.7} delay={1.1} />
+      <FloatingBlock letter="3" bg="#E05535" shadow="#B83A20" x="85%" y="72%" size={46} animName="float-b" duration={3.5} delay={1.9} />
+      <FloatingBlock letter="★" bg="#F5C830" shadow="#C89C10" x="9%"  y="78%" size={30} animName="float-c" duration={4.0} delay={2.4} />
+      <FloatingBlock letter="♪" bg="#4EC9A6" shadow="#2EA882" x="89%" y="28%" size={32} animName="float-d" duration={3.3} delay={0.9} />
 
-      {/* Centered badge above the grid */}
+      {/* Content */}
       <div
-        className="anim-slide-up delay-0"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: 36,
-          position: "relative",
-          zIndex: 1,
-        }}
+        style={{ position: "relative", zIndex: 1, maxWidth: 640, margin: "0 auto" }}
       >
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            background: "rgba(76,191,160,0.14)",
-            border: "1.5px solid rgba(76,191,160,0.32)",
-            borderRadius: 999,
-            padding: "7px 18px",
-          }}
-        >
-          <span style={{ fontSize: 16 }}>🌟</span>
-          <span
+        {/* Badge */}
+        <div className="anim-slide-up delay-0" style={{ marginBottom: 28 }}>
+          <div
             style={{
-              fontFamily: "var(--font-nunito)",
-              fontWeight: 700,
-              fontSize: 14,
-              color: "#2A9075",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              background: "rgba(78,201,166,0.14)",
+              border: "1.5px solid rgba(78,201,166,0.32)",
+              borderRadius: 999,
+              padding: "7px 18px",
             }}
           >
-            Coming Soon — Be the First to Know!
+            <span style={{ fontSize: 16 }}>🌟</span>
+            <span
+              style={{
+                fontFamily: "var(--font-nunito)",
+                fontWeight: 700,
+                fontSize: 14,
+                color: "#2A9075",
+              }}
+            >
+              Coming Soon — Be the First to Know!
+            </span>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p
+          className="anim-slide-up delay-2"
+          style={{
+            fontSize: 18,
+            lineHeight: 1.75,
+            color: "var(--navy-light)",
+            marginBottom: 36,
+            fontWeight: 500,
+          }}
+        >
+          We&apos;re putting the finishing touches on hundreds of songs, games,
+          and stories for little learners ages&nbsp;2–7. Sign up and we&apos;ll
+          let you know the moment it&apos;s ready.
+        </p>
+
+        {/* Email form */}
+        <form
+          className="anim-slide-up delay-3"
+          action="#"
+          style={{
+            display: "flex",
+            gap: 10,
+            flexWrap: "wrap",
+            justifyContent: "center",
+            marginBottom: 36,
+          }}
+        >
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            style={{
+              flex: 1,
+              minWidth: 240,
+              maxWidth: 340,
+              padding: "15px 22px",
+              borderRadius: 999,
+              border: "2px solid rgba(0,0,0,0.12)",
+              background: "white",
+              fontFamily: "var(--font-nunito)",
+              fontWeight: 600,
+              fontSize: 15,
+              color: "var(--navy)",
+              outline: "none",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+            }}
+          />
+          <button
+            type="submit"
+            className="btn-teal"
+            style={{ fontFamily: "var(--font-baloo)", fontSize: 16 }}
+          >
+            Notify Me →
+          </button>
+        </form>
+
+        {/* Sound wave */}
+        <div
+          className="anim-slide-up delay-4"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 12,
+          }}
+        >
+          <div
+            style={{
+              width: 42,
+              height: 42,
+              background: "white",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 3px 10px rgba(0,0,0,0.1)",
+              fontSize: 18,
+              flexShrink: 0,
+            }}
+          >
+            🎵
+          </div>
+          <WaveBars color="var(--teal)" count={10} />
+          <span
+            style={{
+              fontWeight: 700,
+              fontSize: 13,
+              color: "var(--navy-light)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            ABC Song — Coming Soon
           </span>
         </div>
       </div>
 
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 48,
-          alignItems: "center",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        {/* ── Left col ── */}
-        <div>
-
-          {/* Headline */}
-          <h1
-            className="anim-slide-up delay-1"
-            style={{
-              fontFamily: "var(--font-baloo)",
-              fontWeight: 800,
-              fontSize: "clamp(38px, 4.8vw, 66px)",
-              lineHeight: 1.06,
-              color: "var(--navy)",
-              marginBottom: 24,
-            }}
-          >
-            Where Little Minds{" "}
-            <span
-              style={{
-                color: "var(--teal)",
-                display: "block",
-              }}
-            >
-              Sing, Learn
-            </span>
-            <span style={{ display: "block" }}>&amp; Grow</span>
-          </h1>
-
-          {/* Description */}
-          <p
-            className="anim-slide-up delay-2"
-            style={{
-              fontSize: 17,
-              lineHeight: 1.75,
-              color: "var(--navy-light)",
-              maxWidth: 460,
-              marginBottom: 36,
-              fontWeight: 500,
-            }}
-          >
-            PopiLearn makes early childhood education magical — hundreds of
-            original songs, interactive games, and joyful stories crafted for
-            children ages&nbsp;2–7.
-          </p>
-
-          {/* Email notify form */}
-          <form
-            className="anim-slide-up delay-3"
-            action="#"
-            style={{
-              display: "flex",
-              gap: 10,
-              flexWrap: "wrap",
-              marginBottom: 40,
-              maxWidth: 460,
-            }}
-          >
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              style={{
-                flex: 1,
-                minWidth: 220,
-                padding: "14px 20px",
-                borderRadius: 999,
-                border: "2px solid rgba(0,0,0,0.12)",
-                background: "white",
-                fontFamily: "var(--font-nunito)",
-                fontWeight: 600,
-                fontSize: 15,
-                color: "var(--navy)",
-                outline: "none",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-              }}
-            />
-            <button
-              type="submit"
-              className="btn-teal"
-              style={{ fontFamily: "var(--font-baloo)", fontSize: 16 }}
-            >
-              Notify Me →
-            </button>
-          </form>
-
-          {/* Now-playing sound wave */}
-          <div
-            className="anim-slide-up delay-4"
-            style={{ display: "flex", alignItems: "center", gap: 12 }}
-          >
-            <div
-              style={{
-                width: 42,
-                height: 42,
-                background: "white",
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 3px 10px rgba(0,0,0,0.1)",
-                fontSize: 18,
-                flexShrink: 0,
-              }}
-            >
-              🎵
-            </div>
-            <WaveBars color="var(--teal)" count={10} />
-            <span
-              style={{
-                fontWeight: 700,
-                fontSize: 13,
-                color: "var(--navy-light)",
-                whiteSpace: "nowrap",
-              }}
-            >
-              ABC Song — Playing Now
-            </span>
-          </div>
-        </div>
-
-        {/* ── Right col — mascot ── */}
-        <div
-          className="anim-pop-in delay-2"
-          style={{
-            position: "relative",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {/* Outer spinning ring */}
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              width: "95%",
-              aspectRatio: "1",
-              borderRadius: "50%",
-              border: "3px dashed rgba(76,191,160,0.28)",
-              animation: "spin-slow 24s linear infinite",
-              pointerEvents: "none",
-            }}
-          />
-          {/* Inner glow ring */}
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              width: "78%",
-              aspectRatio: "1",
-              borderRadius: "50%",
-              border: "3px dashed rgba(255,208,96,0.3)",
-              animation: "spin-rev 18s linear infinite",
-              pointerEvents: "none",
-            }}
-          />
-          {/* Pulse rings */}
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              width: "60%",
-              aspectRatio: "1",
-              borderRadius: "50%",
-              background: "rgba(76,191,160,0.1)",
-              animation: "pulse-ring 3s ease-out infinite",
-              pointerEvents: "none",
-            }}
-          />
-
-          {/* Banner image */}
-          <div
-            style={{
-              position: "relative",
-              zIndex: 2,
-              width: "90%",
-              borderRadius: 28,
-              overflow: "hidden",
-              boxShadow:
-                "0 28px 64px rgba(0,0,0,0.13), 0 8px 20px rgba(76,191,160,0.2)",
-            }}
-          >
-            <Image
-              src="/PopiBanner.png"
-              alt="PopiLearn — Sing, Learn & Grow!"
-              width={640}
-              height={360}
-              style={{ width: "100%", height: "auto", display: "block" }}
-              priority
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Wave divider */}
+      {/* Wave into trust bar */}
       <div
         aria-hidden
         style={{
@@ -1325,7 +1181,8 @@ export default function Home() {
     <>
       <Nav />
       <main>
-        <HeroSection />
+        <BannerSection />
+        <HeroCTASection />
         <TrustBar />
         <FeaturesSection />
         <LearningSection />
