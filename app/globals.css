@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+/* ── PopiLearn Design Tokens ─────────────────────────────────── */
+/* Aesthetic: Playful toy-like, bright & warm, toddlers age 3-7 */
+/* Brand fonts: Baloo Thambi 2 (display), Nunito (body) */
+
+:root {
+  --font-display: "Baloo Thambi 2", cursive;
+  --font-body: "Nunito", sans-serif;
+
+  /* Brand palette from PopiPlay */
+  --orange: #FF6B35;
+  --yellow: #FFD166;
+  --blue: #4D9DE0;
+  --green: #06D6A0;
+  --pink: #EF476F;
+  --navy: #2B2D42;
+  --brown: #8D6E63;
+  --light-gray: #F0F0F0;
+
+  /* Page */
+  --page-bg: #FFFBF5;
+  --page-bg-alt: #FFF7ED;
+  --surface: #FFF0DB;
+  --surface-hover: #FFE4BC;
+
+  /* Text */
+  --text-primary: #2B2D42;
+  --text-secondary: #4A4A6A;
+  --text-tertiary: #7A7A9A;
+  --text-muted: #A0A0BC;
+  --text-on-dark: #FFFBF5;
+
+  /* Borders */
+  --border: rgba(43, 45, 66, 0.12);
+  --border-accent: rgba(255, 107, 53, 0.3);
+
+  /* Cards */
+  --card-bg: #FFFFFF;
+  --card-shadow: 0 4px 24px rgba(255, 107, 53, 0.08), 0 1px 4px rgba(43, 45, 66, 0.06);
+  --card-shadow-hover: 0 8px 32px rgba(255, 107, 53, 0.15), 0 2px 8px rgba(43, 45, 66, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--page-bg);
+  --color-foreground: var(--text-primary);
+}
+
+/* ── Global styles ───────────────────────────────────────────── */
+
+body {
+  background: var(--page-bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Playful background atmosphere — soft color orbs */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(255, 209, 102, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(77, 157, 224, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 85%, rgba(239, 71, 111, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 5% 65%, rgba(6, 214, 160, 0.10) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 70%, rgba(255, 107, 53, 0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* ── Typography ──────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--orange), var(--pink));
+  border-radius: 999px;
+  border: 2px solid var(--surface);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #e55a28, #d63360);
+}
+
+/* ── Selection ───────────────────────────────────────────────── */
+
+::selection {
+  background: rgba(255, 209, 102, 0.45);
+  color: var(--navy);
+}
+
+/* ── Animations ──────────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.7) translateY(16px); }
+  50% { transform: scale(1.08) translateY(-4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-4deg); }
+  75% { transform: rotate(4deg); }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0); }
+  70% { transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-pop-in {
+  animation: popIn 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 2.5s ease-in-out infinite;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
