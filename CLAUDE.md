@@ -94,9 +94,7 @@ Key design principles:
 
 ## Git Rules
 
-DO NOT commit or push. Build and test only. Angel reviews the work and handles git himself.
-
-Git author email MUST be angelsbadillos@gmail.com on every commit (when Angel commits). Vercel Hobby plan enforces this.
+Git author email MUST be angelsbadillos@gmail.com on every commit. Vercel Hobby plan enforces this.
 
 ## Protected Areas
 

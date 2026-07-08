@@ -1,4 +1,6 @@
 import Image from "next/image";
+import ShortPlayer from "./ShortPlayer";
+import { episodesNewestFirst, latestEpisode } from "@/lib/episodes";
 
 /* ──────────────────────────────────────────────
    SHARED MINI-COMPONENTS
@@ -1189,17 +1191,171 @@ function Footer() {
    PAGE ROOT
 ────────────────────────────────────────────── */
 
+/* ──────────────────────────────────────────────
+   LATEST SHORT (newest video, click-to-play, below banner)
+────────────────────────────────────────────── */
+
+function LatestShortSection() {
+  const ep = latestEpisode();
+  if (!ep) return null;
+
+  return (
+    <section
+      style={{
+        position: "relative",
+        padding: "60px 28px 72px",
+        background: "var(--cream)",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 880,
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: 44,
+          alignItems: "center",
+        }}
+      >
+        {/* Player (first so it sits on top on mobile / left on desktop) */}
+        <div style={{ width: "100%", maxWidth: 300, justifySelf: "center" }}>
+          <ShortPlayer youtubeId={ep.youtubeId} title={ep.title} />
+        </div>
+
+        {/* Copy + CTA */}
+        <div style={{ textAlign: "center" }}>
+          <SectionLabel>Nuevo episodio</SectionLabel>
+          <h2
+            style={{
+              fontFamily: "var(--font-baloo)",
+              fontWeight: 800,
+              fontSize: "clamp(26px, 3.6vw, 42px)",
+              color: "var(--navy)",
+              lineHeight: 1.08,
+              marginBottom: 14,
+            }}
+          >
+            {ep.title}
+          </h2>
+          <p
+            style={{
+              fontWeight: 700,
+              fontSize: 16,
+              color: "var(--navy-light)",
+              maxWidth: 420,
+              margin: "0 auto 26px",
+              lineHeight: 1.5,
+            }}
+          >
+            ¡Canta, baila, ¡pop! y aprende una vez más! Toca para ver el episodio
+            más reciente de Popi.
+          </p>
+          <a
+            href={`https://www.youtube.com/shorts/${ep.youtubeId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-teal"
+            style={{ textDecoration: "none" }}
+          >
+            ▶ Ver en YouTube
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ──────────────────────────────────────────────
+   SHORTS GRID (all episodes, newest first)
+────────────────────────────────────────────── */
+
+function ShortsGridSection() {
+  const eps = episodesNewestFirst();
+  if (eps.length === 0) return null;
+
+  return (
+    <section
+      style={{
+        padding: "80px 28px 88px",
+        background: "var(--cream-mid)",
+        position: "relative",
+      }}
+    >
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <SectionLabel>Todos los episodios</SectionLabel>
+        <h2
+          style={{
+            fontFamily: "var(--font-baloo)",
+            fontWeight: 800,
+            fontSize: "clamp(28px, 4vw, 48px)",
+            color: "var(--navy)",
+            textAlign: "center",
+            lineHeight: 1.1,
+            marginBottom: 48,
+          }}
+        >
+          Canta y aprende con Popi
+        </h2>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+            gap: 24,
+          }}
+        >
+          {eps.map((ep) => (
+            <div
+              key={ep.id}
+              style={{ display: "flex", flexDirection: "column", gap: 10 }}
+            >
+              <ShortPlayer youtubeId={ep.youtubeId} title={ep.title} />
+              <div
+                style={{
+                  fontFamily: "var(--font-baloo)",
+                  fontWeight: 700,
+                  fontSize: 15,
+                  color: "var(--navy)",
+                  lineHeight: 1.2,
+                }}
+              >
+                {ep.title}
+              </div>
+              <a
+                href={`https://www.youtube.com/shorts/${ep.youtubeId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: 13,
+                  fontWeight: 800,
+                  color: "var(--coral-dark)",
+                  textDecoration: "none",
+                }}
+              >
+                Ver en YouTube →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <>
       <Nav />
       <main>
         <BannerSection />
+        <LatestShortSection />
         <HeroCTASection />
         <TrustBar />
         <FeaturesSection />
         <LearningSection />
         <HowItWorksSection />
+        <ShortsGridSection />
         <DownloadSection />
       </main>
       <Footer />
