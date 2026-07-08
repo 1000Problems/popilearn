@@ -1225,7 +1225,7 @@ function LatestShortSection() {
 
         {/* Copy + CTA */}
         <div style={{ textAlign: "center" }}>
-          <SectionLabel>Nuevo episodio</SectionLabel>
+          <SectionLabel>New episode</SectionLabel>
           <h2
             style={{
               fontFamily: "var(--font-baloo)",
@@ -1248,8 +1248,8 @@ function LatestShortSection() {
               lineHeight: 1.5,
             }}
           >
-            ¡Canta, baila, ¡pop! y aprende una vez más! Toca para ver el episodio
-            más reciente de Popi.
+            Sing, dance, pop, and learn all over again! Tap to watch Popi&rsquo;s
+            newest episode.
           </p>
           <a
             href={`https://www.youtube.com/shorts/${ep.youtubeId}`}
@@ -1258,7 +1258,7 @@ function LatestShortSection() {
             className="btn-teal"
             style={{ textDecoration: "none" }}
           >
-            ▶ Ver en YouTube
+            ▶ Watch on YouTube
           </a>
         </div>
       </div>
@@ -1283,7 +1283,7 @@ function ShortsGridSection() {
       }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <SectionLabel>Todos los episodios</SectionLabel>
+        <SectionLabel>All episodes</SectionLabel>
         <h2
           style={{
             fontFamily: "var(--font-baloo)",
@@ -1295,7 +1295,7 @@ function ShortsGridSection() {
             marginBottom: 48,
           }}
         >
-          Canta y aprende con Popi
+          Sing and learn with Popi
         </h2>
 
         <div
@@ -1333,7 +1333,7 @@ function ShortsGridSection() {
                   textDecoration: "none",
                 }}
               >
-                Ver en YouTube →
+                Watch on YouTube →
               </a>
             </div>
           ))}
